@@ -4,7 +4,9 @@ import xlsxwriter
 
 class Loginfo(object):
 	def __init__(self, path = '', mode = 'w'):
-		fname = path + time.strftime('%Y-%m-%d', time.gmtime())
+		#fname = path + time.strftime('%Y-%m-%d ', time.gmtime())
+		fname = path + time.strftime("%Y%m%d%H%M%S", time.localtime())
+		#生成日志文件
 		self.log = open(path + fname + '.txt', mode)
 
 	def log_init(self, sheetname, *title):
@@ -49,6 +51,6 @@ if __name__ == '__main__':
 	log.log_close()
 	'''
 	xinfo = Xlloginfo()
-	xinfo.log_init('test', 'uname', 'pwd', 'result', 'info')
+	xinfo.log_init('test','uname', 'pwd', 'result', 'info')
 	xinfo.log_write('123', '123', 'Error', 'error')
 	xinfo.log_close()

@@ -85,6 +85,7 @@ def login_test(ele_dict,user_list):
     for arg in user_list:
         sendVals(ele_tuple, arg)
         result = checkResult(d, ele_dict['errorid'], arg, log)
+        #添加重复执行
         if result:
             #logout
             logout(d, ele_dict)
@@ -108,7 +109,10 @@ if __name__ == '__main__':
 
     ele_dict = get_webinfo('webinfo.txt')
     #user_list = get_userinfo(r'C:\Users\hyg\Desktop\test\userinfo.txt')
+    '''
     xinfo = XlUserinfo('userinfo.xls')
     user_list = xinfo.get_sheetinfo_by_index(0)
+    '''
+    user_list=get_userinfo('userinfo.txt')
     #file webinfo/usrinfo ele_dict= get_webinfo(path) user_list=get_userinfo(path)
     login_test(ele_dict,user_list)

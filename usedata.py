@@ -5,7 +5,6 @@ def get_webinfo(path):
 	web_info = {}
 	#config = open(path)
 	config = codecs.open(path, 'r', 'utf-8')
-	
 	for line in config:
 		result = [ele.strip() for ele in line.split('=')]
 		web_info.update(dict([result]))
@@ -13,14 +12,12 @@ def get_webinfo(path):
 
 def get_userinfo(path):
 	user_info = []
-	#config = open(path)
 	config = codecs.open(path, 'r', 'utf-8')
 	for line in config:
 		user_dict = {}
 		result = [ele.strip() for ele in line.split(';')]
 		for r in result:
 			account = [ele.strip() for ele in r.split('=')]
-			print (account)
 			user_dict.update(dict([account]))
 		user_info.append(user_dict)
 	return user_info
@@ -58,7 +55,7 @@ if __name__ == '__main__':
 	#	print (key, webinfo[key])
 	#userinfo = get_userinfo(r'C:\Users\hyg\Desktop\test\userinfo.txt')
 	#print (userinfo)
-	xinfo = XlUserinfo(r'C:\Users\hyg\Desktop\test\userinfo.xls')
+	xinfo = XlUserinfo(r'userinfo.xls')
 	info = xinfo.get_sheetinfo_by_index(0)
 	print (info)
 	info = xinfo.get_sheetinfo_by_name('Sheet1')
